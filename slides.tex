@@ -70,7 +70,7 @@
 \author{Patrick Sanan}
 \institute[ETHZ]
 {
-ETH Zurich\\
+Institute of Geophysics, ETH Zurich\\
 \href{mailto:patrick.sanan@erdw.ethz.ch}{patrick.sanan@erdw.ethz.ch}
 }
 
@@ -86,7 +86,7 @@ ETH Zurich\\
 \begin{frame}[fragile]
 \titlepage
 \begin{center}
-\href{https://github.com/psanan/git_tutorial}{https://github.com/psanan/practices\_for\_scientific\_computation}
+\href{https://github.com/psanan/practices_for_scientific_computation}{https://github.com/psanan/practices\_for\_scientific\_computation}
 \end{center}
 \end{frame}
 
@@ -97,11 +97,38 @@ ETH Zurich\\
 \section{Setting}
 
 \begin{frame}[fragile]
+\frametitle{Motivation}
+\begin{itemize}
+\item Scientists are increasingly relying on computational tools, and spending their time struggling with them.
+\item People often repeat the same mistakes as they develop workflows by trial and error, and reach the same ultimate conclusions
+\item Later, I will tell you that you need to learn about version control (git). Why should you bother?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
 \frametitle{Assumed Audience}
+\begin{itemize}
+\item You're a scientist who works with numerical, computational tools (simulation, data processing and analysis), beyond the (exclusive) use of commercial packages
+\item You know how to work from the command line
+\item You're interested in using the available tools more efficiently
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Outline and Scope}
+\begin{itemize}
+  \item I will attempt to provide you with a few principles that I feel that I (and those I work with) have ``learnined the hard  way''
+  \item I will presnet a few concrete applications of these principles, focusing on common tasks often considered boring.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Beating the ``Greedy Algorithm''}
+\begin{itemize}
+  \item Smart people working quickly tend to make similar choices when presented with the available tools
+\item Often, these work well, but not always, because they make ``locally optimal'', not ``globally optimal'' choces
+\item The principles that follow are about adding rules to try to avoid getting trapped in ``local minima''.
+\end{itemize}
 \end{frame}
 
 \section{Principles}
@@ -109,59 +136,188 @@ ETH Zurich\\
 \subsection{``You will forget''}
 \begin{frame}[fragile]
 \frametitle{Principle: ``You will forget''}
+\begin{itemize}
+\item After a given project leaves your immediate attention, you will remember few of the technical details
+\item The Greedy Algorithm:
+\begin{itemize}
+\item Only consider the exact, current use case
+\item Don't write much down
+\end{itemize}
+\item Observations
+\begin{itemize}
+\item Your own code, from a few months ago, looks like a stranger's code
+\item Context switching has large overheads
+\item ``Getting it to run again'' is often a very time-consuming and inspiration-sucking exercise.
+\end{itemize}
+\end{itemize}
 \end{frame}
 
-\subsection{``Documentation is difficult''}
 \begin{frame}[fragile]
-\frametitle{Principle: ``Documentation is difficult''}
+\frametitle{Corollaries: ``You will forget''}
+  \begin{itemize}
+    \item State is your enemy
+    \item Encapsulation is essential
+    \item Document, but avoid documentation which you have to remember to update
+     %\item Avoid technical debt
+  \end{itemize}
 \end{frame}
 
-\subsection{``Good practices are Good Science''}
+\subsection{``Good practices are good science''}
 \begin{frame}[fragile]
 \frametitle{Principle: ``Good practices are Good Science''}
+\begin{itemize}
+  \item Treating computational tools as first-class parts of the scientific process is effective in increasing the quality of scientific output.
+\item The Greedy Algorithm
+\begin{itemize}
+\item Treat computational methods as simply another tool in the toolbox, applying when needed
+\item When presenting results, consider computational details to be uninteresting and trivial
+\end{itemize}
+\item Observations
+\begin{itemize}
+\item The ``Third Pillar of Science'' concept is real
+\item It can be surprisingly difficult to reproduce computational results (even your own)
+\item Applying scientific ethics to the use of computational tools can be effective
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Corollaries: ``Good practices are Good Science''}
+\begin{itemize}
+\item Challenge your code like you challenge ideas: try to prove it wrong. Get rid of things that don't work.
+\item The value of clarity, reproducibility and transparency extends to your code
+\item Document your work as you progress
+\end{itemize}
 \end{frame}
 
 \subsection{``Numerical codes are special''}
 \begin{frame}[fragile]
 \frametitle{Principle: ``Numerical codes are special''}
+\begin{itemize}
+  \item Numerical codes present distinct challenges compared to both general computation / computer science, and general scientific endeavors; these need to be dealt with directly.
+\item The Greedy Algorithm:
+\begin{itemize}
+\item If it seems to work, good enough
+\end{itemize}
+\item Observations
+\begin{itemize}
+\item Floating-point arithmetic, particularly in parallel, requires special thought
+\item Seemingly-simple code can rely on a great deal of mathematical or physical expertise
+\item Numerical methods are often not robust to seemingly-minor changes in the problem setting
+\end{itemize}
+\end{itemize}
 \end{frame}
 
-\subsection{``Less!''}
 \begin{frame}[fragile]
-\frametitle{Principle : ``Less!''}
+\frametitle{Corollaries: ``Numerical codes are special''}
+\begin{itemize}
+  \item ``If you see something strange- there is a bug!!''\footnote{Taras Gerya} % TODO put in the actual ref (pdsbib repo as submodule)
+  \item It pays to learn the ``Numerical facts of life''\footnote{Ed Beuler, ``PETSc for Partial Differential Equations'' (to be published by SIAM Press)}, for example the fundamental limits of finite-precision arithmetic.
+  \item Numerical codes need (easy-to-run) tests
+  % \item ``Don't believe it until you can run it''
+%\item Don't vary more than one at a time: physics, numerical method, code logic, or computational system.
+\end{itemize}
+\end{frame}
+
+\subsection{``Less.'}
+\begin{frame}[fragile]
+\frametitle{Principle : ``Less.''}
+\begin{itemize}
+\item
+\item The Greedy Algorithm
+\begin{itemize}
+\item Copy-paste instead of encapsulating and re-using
+\item Multiple copies of the same data
+\item Leave commented-out code, just in case
+\item Add to the same file until it's 1000s of lines long
+\end{itemize}
+\item Observations
+\begin{itemize}
+\item It's easier to write code than read it
+\item Unforeseen problems and difficult bugs become much more prevalent, the more complicated a system is
+\item Code ``rots''
+\item Hierarchy, encapsulation and data-hiding make big things small
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Corollaries: ``Less.''}
+\begin{itemize}
+\item Treat code as a liability, as much as an asset
+\item Look out for ways to delete and encapsulate things
+\item Try to present work to other people in chunks of less than a ``screen''.
+\end{itemize}
 \end{frame}
 
 \section{Practices}
 
 \begin{frame}[fragile]
-How can we apply our 5 principles?
+How can we apply our principles?
 \begin{enumerate}
 \item``You will forget''
-\item``Documentation is difficult''
-\item``Good practices are Good Science''
+\item``Good practices are good science''
 \item``Numerical codes are special''
-\item``Less!''
+\item``Less.''
 \end{enumerate}
 \end{frame}
 
 \subsection{The art of the README}
 \begin{frame}[fragile]
 \frametitle{Practice: The art of the README}
+  \begin{itemize}
+    \item This is your one and only change to say something to people when they first come across your project.
+    \item A quickstart is incredibly valuable
+      \begin{itemize}
+        \item To goal is to get allow a user to have a working state to start from
+        \item Show, don't explain
+        \item Have copy-paste-eable commands (test them, exactly, on more than one system)
+      \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \subsection{Good login files}
 \begin{frame}[fragile]
 \frametitle{Practice: Good login files}
+\begin{itemize}
+  \item Avoid state
+  \item Be very careful about adding things to \lstinline{PATH}, \lstinline{PYTHONPATH}, \lstinline{LD_DYNAMIC_LIBRARY_PATH}, etc.
+  \item Do not assume that you will only work on one project.
+  \item Explicit is better than implicit
+  \item Use a single login file on all systems
+\end{itemize}
 \end{frame}
 
+% TODO finish
 \subsection{Asking good technical questions}
 \begin{frame}[fragile]
 \frametitle{Practice: Asking good technical questions}
+  \begin{itemize}
+    \item ``You will forget'': You will very likely come back to this question and answer again, later. Write it clearly.
+
+\item ``Less'':
+  a. the XY problem
+      b. Concisely describing the actual problem very often leads you to the answer, yourself (``rubber ducking'')
+  c. Confine long output to attachments
+\item ``Numerical code is special'': If the problem isn't reproducible, or you don't have  avery similar working state, it's very hard to diagnose problems.
+  d. Bisectability is the key
+  e. Value the recipient's time
+  \end{itemize}
+
+  For more, see \href{https://blogs.egu.eu/divisions/gd/2019/07/03/it-doesnt-work-asking-questions-about-scientific-software/}{my post, ``It doesn't work!'', on the EGU blog}.
 \end{frame}
 
 \subsection{Using version control}
 \begin{frame}[fragile]
 \frametitle{Practice: Using version control}
+Good use of version control helps satisfy all of our principles:
+  \begin{itemize}
+    \item ``You will forget'': keep track of past states, build repositories with documentation
+    \item ``Good practices are good science'': Identify exact versions of software, distribute code, collaborate on code.
+    \item ``Numerical codes are special'': Manage working states effectively, easily move to new machines
+    \item ``Less'': maintain a single, canonical history of a project.
+  \end{itemize}
+  For these and many other reasons, there is \href{https://github.com/psanan/git_tutorial}{an entire git tutorial available at github.com/psanan/git\_tutorial}.
 \end{frame}
 
 \end{document}
