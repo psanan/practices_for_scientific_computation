@@ -30,9 +30,7 @@
 \usepackage{color}
 \usepackage{amsmath}
 
-\definecolor{greenmod}{rgb}{0,0.6,0}
-
-\hypersetup{linkcolor=magenta,colorlinks=true}
+\hypersetup{linkcolor=,urlcolor=magenta,colorlinks=true}
 
 \usetheme{Madrid}
 \setbeamertemplate{navigation symbols}{} % Remove the navigation symbols
@@ -60,18 +58,14 @@
     \end{beamercolorbox}
   \end{centering}
 }
+\setbeamertemplate{section page}[customsection]
+\setbeamertemplate{subsection page}[customsubsection]
 \AtBeginSection{\frame{\sectionpage}}
 \AtBeginSubsection{\frame{\subsectionpage}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \graphicspath{{./images/}}
 
 \usepackage{booktabs}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \author{Patrick Sanan}
 \institute[ETHZ]
@@ -80,19 +74,14 @@ ETH Zurich\\
 \href{mailto:patrick.sanan@erdw.ethz.ch}{patrick.sanan@erdw.ethz.ch}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Practices for Scientific Computation}
-\subtitle[]{Principles, Corrolaries, and Simple Applications}
+\subtitle[]{Principles, Corollaries, and Simple Applications}
 \date[]{}
 % Long date messes up footer
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{document}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[fragile]
 \titlepage
@@ -101,19 +90,78 @@ ETH Zurich\\
 \end{center}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{frame}
 \tableofcontents
 \end{frame}
 
-\section{Who is this for?}
+\section{Setting}
+
 \begin{frame}[fragile]
 \frametitle{Assumed Audience}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Outline}
+\frametitle{Outline and Scope}
+\end{frame}
+
+\section{Principles}
+
+\subsection{``You will forget''}
+\begin{frame}[fragile]
+\frametitle{Principle: ``You will forget''}
+\end{frame}
+
+\subsection{``Documentation is difficult''}
+\begin{frame}[fragile]
+\frametitle{Principle: ``Documentation is difficult''}
+\end{frame}
+
+\subsection{``Good practices are Good Science''}
+\begin{frame}[fragile]
+\frametitle{Principle: ``Good practices are Good Science''}
+\end{frame}
+
+\subsection{``Numerical codes are special''}
+\begin{frame}[fragile]
+\frametitle{Principle: ``Numerical codes are special''}
+\end{frame}
+
+\subsection{``Less!''}
+\begin{frame}[fragile]
+\frametitle{Principle : ``Less!''}
+\end{frame}
+
+\section{Practices}
+
+\begin{frame}[fragile]
+How can we apply our 5 principles?
+\begin{enumerate}
+\item``You will forget''
+\item``Documentation is difficult''
+\item``Good practices are Good Science''
+\item``Numerical codes are special''
+\item``Less!''
+\end{enumerate}
+\end{frame}
+
+\subsection{The art of the README}
+\begin{frame}[fragile]
+\frametitle{Practice: The art of the README}
+\end{frame}
+
+\subsection{Good login files}
+\begin{frame}[fragile]
+\frametitle{Practice: Good login files}
+\end{frame}
+
+\subsection{Asking good technical questions}
+\begin{frame}[fragile]
+\frametitle{Practice: Asking good technical questions}
+\end{frame}
+
+\subsection{Using version control}
+\begin{frame}[fragile]
+\frametitle{Practice: Using version control}
 \end{frame}
 
 \end{document}
