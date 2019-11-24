@@ -1,0 +1,119 @@
+\documentclass{beamer}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{verylightgray}{gray}{0.95}
+\definecolor{somewhatdarkgray}{gray}{0.3}
+\lstset{
+  language=,
+  basicstyle=\footnotesize\ttfamily,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  tabsize=2,
+  extendedchars=true,
+  breaklines=true,
+  keywordstyle=\color{red},
+  stringstyle=\color{blue}\ttfamily,
+  numberstyle=\color{violet},
+  showspaces=false,
+  showtabs=false,
+  showstringspaces=false,
+  backgroundcolor=\color{verylightgray},
+  frame=single,
+  framexleftmargin=3px,
+  framexrightmargin=3px,
+  rulecolor=\color{lightgray},
+  basewidth=0.5em,                % For consistent spacing with inline listings
+  columns=flexible,               % For copy-pasting
+}
+\usepackage{color}
+\usepackage{amsmath}
+
+\definecolor{greenmod}{rgb}{0,0.6,0}
+
+\hypersetup{linkcolor=magenta,colorlinks=true}
+
+\usetheme{Madrid}
+\setbeamertemplate{navigation symbols}{} % Remove the navigation symbols
+\setbeamertemplate{sections/subsections in toc}[default] %Turn off ugly toc numbering
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize item}[triangle]
+\setbeamertemplate{enumerate items}[default]
+%\setbeamercovered{transparent}
+\usepackage{appendixnumberbeamer}
+\defbeamertemplate{section page}{customsection}[1][]{%
+  \begin{centering}
+    {\usebeamerfont{section name}\usebeamercolor[fg]{section name}#1}
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=12pt,center]{part title}
+      \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+  \end{centering}
+}
+\defbeamertemplate{subsection page}{customsubsection}[1][]{%
+  \begin{centering}
+    {\usebeamerfont{subsection name}\usebeamercolor[fg]{subsection name}#1}
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{part title}
+      \usebeamerfont{subsection title}\insertsubsection\par
+    \end{beamercolorbox}
+  \end{centering}
+}
+\AtBeginSection{\frame{\sectionpage}}
+\AtBeginSubsection{\frame{\subsectionpage}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{./images/}}
+
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Patrick Sanan}
+\institute[ETHZ]
+{
+ETH Zurich\\
+\href{mailto:patrick.sanan@erdw.ethz.ch}{patrick.sanan@erdw.ethz.ch}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Practices for Scientific Computation}
+\subtitle[]{Principles, Corrolaries, and Simple Applications}
+\date[]{}
+% Long date messes up footer
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\titlepage
+\begin{center}
+\href{https://github.com/psanan/git_tutorial}{https://github.com/psanan/practices\_for\_scientific\_computation}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Who is this for?}
+\begin{frame}[fragile]
+\frametitle{Assumed Audience}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Outline}
+\end{frame}
+
+\end{document}
