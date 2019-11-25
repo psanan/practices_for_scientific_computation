@@ -99,8 +99,8 @@ Institute of Geophysics, ETH Zurich\\
 \begin{frame}[fragile]
 \frametitle{Motivation}
 \begin{itemize}
-\item Scientists are increasingly relying on computational tools, and spending their time struggling with them.
-\item People often repeat the same mistakes as they develop workflows by trial and error, and reach the same ultimate conclusions
+  \item Scientists rely, increasingly, on computational tools, yet often feel frustrated by them
+  \item People often repeat the same mistakes as they develop workflows based on short-term goals
 \item Later, I will tell you that you need to learn about version control (git). Why should you bother?
 \end{itemize}
 \end{frame}
@@ -108,8 +108,8 @@ Institute of Geophysics, ETH Zurich\\
 \begin{frame}[fragile]
 \frametitle{Assumed Audience}
 \begin{itemize}
-\item You're a scientist who works with numerical, computational tools (simulation, data processing and analysis), beyond the (exclusive) use of commercial packages
-\item You know how to work from the command line
+\item You're a scientist who works with numerical, computational tools (simulation, data processing and analysis, etc.), beyond the (exclusive) use of commercial packages
+\item You know what ``the command line'' is
 \item You're interested in using the available tools more efficiently
 \end{itemize}
 \end{frame}
@@ -117,8 +117,8 @@ Institute of Geophysics, ETH Zurich\\
 \begin{frame}[fragile]
 \frametitle{Outline and Scope}
 \begin{itemize}
-  \item I will attempt to provide you with a few principles that I feel that I (and those I work with) have ``learnined the hard  way''
-  \item I will presnet a few concrete applications of these principles, focusing on common tasks often considered boring.
+  \item I will attempt to provide you with a few principles that I feel are often ``learned the hard way''
+  \item I will present a few concrete applications of these principles, focusing on common tasks often considered boring.
 \end{itemize}
 \end{frame}
 
@@ -126,7 +126,7 @@ Institute of Geophysics, ETH Zurich\\
 \frametitle{Beating the ``Greedy Algorithm''}
 \begin{itemize}
   \item Smart people working quickly tend to make similar choices when presented with the available tools
-\item Often, these work well, but not always, because they make ``locally optimal'', not ``globally optimal'' choces
+\item Often, these work well, but not always, because they make ``locally optimal'', not ``globally optimal'' choices
 \item The principles that follow are about adding rules to try to avoid getting trapped in ``local minima''.
 \end{itemize}
 \end{frame}
@@ -141,7 +141,7 @@ Institute of Geophysics, ETH Zurich\\
 \item The Greedy Algorithm:
 \begin{itemize}
 \item Only consider the exact, current use case
-\item Don't write much down
+\item Don't document the boring details
 \end{itemize}
 \item Observations
 \begin{itemize}
@@ -174,8 +174,8 @@ Institute of Geophysics, ETH Zurich\\
 \end{itemize}
 \item Observations
 \begin{itemize}
-\item The ``Third Pillar of Science'' concept is real
-\item It can be surprisingly difficult to reproduce computational results (even your own)
+\item The ``Third Pillar of Science'' concept is a useful idea
+\item It can be surprisingly difficult to reproduce computational results (including your own)
 \item Applying scientific ethics to the use of computational tools can be effective
 \end{itemize}
 \end{itemize}
@@ -211,25 +211,24 @@ Institute of Geophysics, ETH Zurich\\
 \begin{frame}[fragile]
 \frametitle{Corollaries: ``Numerical codes are special''}
 \begin{itemize}
-  \item ``If you see something strange- there is a bug!!''\footnote{Taras Gerya} % TODO put in the actual ref (pdsbib repo as submodule)
-  \item It pays to learn the ``Numerical facts of life''\footnote{Ed Beuler, ``PETSc for Partial Differential Equations'' (to be published by SIAM Press)}, for example the fundamental limits of finite-precision arithmetic.
+  \item ``If you see something strange- there is a bug!''\footnote{Taras Gerya, ``Numerical Geodynamic Modelling'', Cambridge University Press, 2009}
+  \item It pays to learn the ``Numerical facts of life''\footnote{Ed Beuler, ``PETSc for Partial Differential Equations'' (coming from SIAM Press)}, for example the fundamental limits of finite-precision arithmetic.
   \item Numerical codes need (easy-to-run) tests
-  % \item ``Don't believe it until you can run it''
+  \item ``Don't believe it until you can run it''\footnote{Matt Knepley (?)}
 %\item Don't vary more than one at a time: physics, numerical method, code logic, or computational system.
 \end{itemize}
 \end{frame}
 
-\subsection{``Less.'}
+\subsection{``Less.''}
 \begin{frame}[fragile]
-\frametitle{Principle : ``Less.''}
+\frametitle{Principle: ``Less.''}
 \begin{itemize}
-\item
+\item Complexity and volume of information inevitably creates work
 \item The Greedy Algorithm
 \begin{itemize}
 \item Copy-paste instead of encapsulating and re-using
 \item Multiple copies of the same data
 \item Leave commented-out code, just in case
-\item Add to the same file until it's 1000s of lines long
 \end{itemize}
 \item Observations
 \begin{itemize}
@@ -266,12 +265,14 @@ How can we apply our principles?
 \begin{frame}[fragile]
 \frametitle{Practice: The art of the README}
   \begin{itemize}
+    \item The common \texttt{README} file in the root directory of most software projects is a great example of application of ``You will forget'', and ``Less.''.
     \item This is your one and only change to say something to people when they first come across your project.
     \item A quickstart is incredibly valuable
       \begin{itemize}
-        \item To goal is to get allow a user to have a working state to start from
+        \item Get a user to a ``working'' state as quickly as possible
         \item Show, don't explain
-        \item Have copy-paste-eable commands (test them, exactly, on more than one system)
+        \item Have copy-paste-able commands (test them, exactly, on more than one system)
+        \item Some expected output is very helpful
       \end{itemize}
     \end{itemize}
 \end{frame}
@@ -280,11 +281,14 @@ How can we apply our principles?
 \begin{frame}[fragile]
 \frametitle{Practice: Good login files}
 \begin{itemize}
-  \item Avoid state
+  \item ``You will forget'': 
+    \begin{itemize}
+      \item Avoid state
   \item Be very careful about adding things to \lstinline{PATH}, \lstinline{PYTHONPATH}, \lstinline{LD_DYNAMIC_LIBRARY_PATH}, etc.
-  \item Do not assume that you will only work on one project.
-  \item Explicit is better than implicit
-  \item Use a single login file on all systems
+  \item Explicit (define helper functions) is better than implicit (hard-coding environment variables)
+    \end{itemize}
+  \item ``Less.'': Use a single set of login files on all systems, for all projects
+  \item ``Good practices are good science'': login files are very often undocumented state for your experiments.
 \end{itemize}
 \end{frame}
 
@@ -294,14 +298,19 @@ How can we apply our principles?
 \frametitle{Practice: Asking good technical questions}
   \begin{itemize}
     \item ``You will forget'': You will very likely come back to this question and answer again, later. Write it clearly.
+\item ``Less.'':
+  Try to describe the problem as briefly as you can, while still being accurate. This very often leads you to the answer, yourself (``rubber ducking'').
+\item ``Numerical code is special'':
+  \begin{itemize}
+    \item Reproducibility is essential
+    \item ``Bisectability'' is important - a similar, working state is invaluable
+  \end{itemize}
 
-\item ``Less'':
-  a. the XY problem
-      b. Concisely describing the actual problem very often leads you to the answer, yourself (``rubber ducking'')
-  c. Confine long output to attachments
-\item ``Numerical code is special'': If the problem isn't reproducible, or you don't have  avery similar working state, it's very hard to diagnose problems.
-  d. Bisectability is the key
-  e. Value the recipient's time
+\item ``Good practices are good science'':
+  \begin{itemize}
+    \item State your assumptions to avoid the XY problem
+    \item Ask your question in public, so that others can learn
+  \end{itemize}
   \end{itemize}
 
   For more, see \href{https://blogs.egu.eu/divisions/gd/2019/07/03/it-doesnt-work-asking-questions-about-scientific-software/}{my post, ``It doesn't work!'', on the EGU blog}.
@@ -315,9 +324,9 @@ Good use of version control helps satisfy all of our principles:
     \item ``You will forget'': keep track of past states, build repositories with documentation
     \item ``Good practices are good science'': Identify exact versions of software, distribute code, collaborate on code.
     \item ``Numerical codes are special'': Manage working states effectively, easily move to new machines
-    \item ``Less'': maintain a single, canonical history of a project.
+    \item ``Less.'': maintain a single, canonical history of a project.
   \end{itemize}
-  For these and many other reasons, there is \href{https://github.com/psanan/git_tutorial}{an entire git tutorial available at github.com/psanan/git\_tutorial}.
+  For these and many other reasons, there is an entire git tutorial available at \href{https://github.com/psanan/git_tutorial}{github.com/psanan/git\_tutorial}.
 \end{frame}
 
 \end{document}
